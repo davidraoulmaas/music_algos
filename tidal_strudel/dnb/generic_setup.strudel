@@ -1,0 +1,34 @@
+register('rlpf', (x,pat) => {return pat.lpf(pure(x).mul(12).pow(4))})
+setGainCurve(x => Math.pow(x,2))
+setCpm(170/4)
+
+
+$drums: stack(
+  s("bd:1").beat("0,7?,10",16).duck("3:4:5"),
+  s("sd:2").beat("4,12",16),
+  s("hh:4!8")
+)
+  // .rib(0,1/8)
+  .orbit(2)._scope()
+
+$bass: s("supersaw!8").note("<c# f d# [d# a#2 f2]>/2".sub(12)).orbit(3)
+  .rlpf
+  (slider(0.254)).lpenv("2").room(1)
+.gain(1.2)
+
+$test: s("bytebeat!4@4").note("<e# [g g#] e# b# >").att(.1).rlpf(slider(0.398)).lpenv("2")
+  .delay(.2).delaytime(rand)
+  .room(1).roomsize(2)
+  .att(.2)
+
+
+_$riser: s("pulse!8").dec(.2).fm(time).fmh(time).orbit(5)
+
+_$vox: s("z_tan:3").scrub(
+  berlin.fast(2).seg(8)
+  .rib(13,2)
+  )
+.delay(.6).delaytime(rand)
+  // .room(1).roomsize(5)
+  // .dry(0)
+.orbit(4)

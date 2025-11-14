@@ -5,7 +5,7 @@ A. Either in [browser](https://strudel.cc)
 
 or
 
-via VSCode extension
+B. via VSCode extension
 
 ```
 Id: roipoussiere.tidal-strudel
